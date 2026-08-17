@@ -216,6 +216,17 @@ const THEME_PRESETS = [
 
 const DEFAULT_THEME = THEME_PRESETS[0];
 
+const CHANGELOG = [
+  {ver:"v3.3",date:"2026-08-17",he:"תיקון מסך לבן + שחזור היסטוריית שינויים",en:"Fix white screen + restore changelog"},
+  {ver:"v3.2",date:"2026-08-17",he:"כפתור פתיחת סיידבר בולט עם כיתוב",en:"Prominent sidebar toggle button with label"},
+  {ver:"v3.1",date:"2026-08-17",he:"סיידבר מתכווץ + תיקון רספונסיביות למסכים קטנים",en:"Collapsible sidebar + responsive fix for small screens"},
+  {ver:"v3.0",date:"2026-08-17",he:"סימולטור מלא — ערכות צבעים, ניווט D-Pad, מצב בהיר, צבעים מותאמים",en:"Full simulator — theme system, D-Pad nav, light mode, custom colors"},
+  {ver:"v2.0",date:"2026-08-17",he:"פלטפורמת מולטי-מכשיר עם מסכים RTL, השלמה אוטומטית ושמירת טיוטות",en:"Multi-device platform with RTL screens, auto-complete, draft storage"},
+  {ver:"v1.2",date:"2026-08-17",he:"תמיכה מלאה בעברית — ממשק דו-לשוני, פריסת RTL, תוכן מסכים בעברית",en:"Full Hebrew support — bilingual UI, RTL layout, Hebrew screen content"},
+  {ver:"v1.1",date:"2026-08-17",he:"מעקב היסטוריית שינויים ואזור changelog",en:"Change history tracking and changelog section"},
+  {ver:"v1.0",date:"2026-08-17",he:"ערכת וויירפריים ראשונית ל-FuturePad T127 עם סאב-דומיין מותאם",en:"Initial wireframe kit for FuturePad T127 with custom subdomain"},
+];
+
 /* ═══════════ SCREEN DEFINITIONS ═══════════ */
 const SCREEN_DEFS = [
   {id:"idle",      he:"מסך ראשי",   en:"Home",         icon:"🏠",skHe:["תפריט","","אנ״ק"],      skEn:["Menu","","Contacts"],    type:"idle"},
@@ -626,16 +637,6 @@ function App(){
     {showAdd&&<AddDeviceModal onClose={()=>setShowAdd(false)} onSave={addDraft} isHe={isHe}/>}
   </div>);
 }
-
-const CHANGELOG = [
-  {ver:"v3.2",date:"2026-08-17",he:"כפתור פתיחת סיידבר בולט עם כיתוב",en:"Prominent sidebar toggle button with label"},
-  {ver:"v3.1",date:"2026-08-17",he:"סיידבר מתכווץ + תיקון רספונסיביות למסכים קטנים",en:"Collapsible sidebar + responsive fix for small screens"},
-  {ver:"v3.0",date:"2026-08-17",he:"סימולטור מלא — ערכות צבעים, ניווט D-Pad, מצב בהיר, צבעים מותאמים",en:"Full simulator — theme system, D-Pad nav, light mode, custom colors"},
-  {ver:"v2.0",date:"2026-08-17",he:"פלטפורמת מולטי-מכשיר עם מסכים RTL, השלמה אוטומטית ושמירת טיוטות",en:"Multi-device platform with RTL screens, auto-complete, draft storage"},
-  {ver:"v1.2",date:"2026-08-17",he:"תמיכה מלאה בעברית — ממשק דו-לשוני, פריסת RTL, תוכן מסכים בעברית",en:"Full Hebrew support — bilingual UI, RTL layout, Hebrew screen content"},
-  {ver:"v1.1",date:"2026-08-17",he:"מעקב היסטוריית שינויים ואזור changelog",en:"Change history tracking and changelog section"},
-  {ver:"v1.0",date:"2026-08-17",he:"ערכת וויירפריים ראשונית ל-FuturePad T127 עם סאב-דומיין מותאם",en:"Initial wireframe kit for FuturePad T127 with custom subdomain"},
-];
 
 ReactDOM.createRoot(document.getElementById("app")).render(<App/>);
 </script>
