@@ -17,10 +17,12 @@ body{font-family:'Segoe UI',-apple-system,system-ui,sans-serif;background:var(--
 .app-layout{display:flex;min-height:100vh}
 
 /* Sidebar */
-.sidebar{width:260px;background:var(--surface);border-left:1px solid var(--border);padding:14px;overflow-y:auto;flex-shrink:0;display:flex;flex-direction:column;gap:14px;transition:margin .25s,opacity .25s;position:relative}
+.sidebar{width:260px;background:var(--surface);border-left:1px solid var(--border);padding:14px;overflow-y:auto;flex-shrink:0;display:flex;flex-direction:column;gap:14px;transition:width .25s,padding .25s,opacity .25s;position:relative}
 .sidebar.collapsed{width:0;padding:0;overflow:hidden;border:none;opacity:0}
-.sb-toggle{position:fixed;top:10px;right:10px;z-index:100;width:36px;height:36px;border-radius:8px;background:var(--surface);border:1px solid var(--border);color:var(--text2);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.1);transition:.15s}
-.sb-toggle:hover{border-color:var(--accent);color:var(--accent)}
+.sb-toggle{position:fixed;top:12px;right:12px;z-index:100;height:40px;border-radius:10px;background:var(--accent);border:none;color:#fff;font-size:13px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:6px;padding:0 14px;box-shadow:0 2px 12px rgba(74,124,220,.35);transition:.15s;font-family:inherit}
+.sb-toggle:hover{background:var(--accent2);box-shadow:0 3px 16px rgba(74,124,220,.45)}
+.sb-toggle.open{background:var(--surface);color:var(--text2);border:1px solid var(--border);box-shadow:0 2px 8px rgba(0,0,0,.1)}
+.sb-toggle.open:hover{border-color:var(--accent);color:var(--accent)}
 .sidebar h3{font-size:12px;color:var(--text3);font-weight:600;margin-bottom:6px;text-transform:uppercase;letter-spacing:.3px}
 .sb-section{background:var(--surface2);border-radius:10px;padding:12px}
 .sb-row{display:flex;align-items:center;gap:8px;margin-bottom:8px}
@@ -460,7 +462,9 @@ function App(){
 
   return(<div className="app-layout">
     {/* ═══ SIDEBAR TOGGLE ═══ */}
-    <button className="sb-toggle" onClick={()=>setSidebarOpen(p=>!p)} title={isHe?"הצג/הסתר פאנל":"Toggle panel"}>{sidebarOpen?"✕":"⚙"}</button>
+    <button className={`sb-toggle${sidebarOpen?" open":""}`} onClick={()=>setSidebarOpen(p=>!p)}>
+      {sidebarOpen?"✕":(<>{isHe?"⚙ הגדרות תצוגה":"⚙ Display Settings"}</>)}
+    </button>
 
     {/* ═══ SIDEBAR ═══ */}
     <div className={`sidebar${sidebarOpen?"":" collapsed"}`}>
