@@ -414,6 +414,7 @@ function App(){
   const[activeDevId,setActiveDevId]=useState(null);
   const[showAdd,setShowAdd]=useState(false);
   const[sidebarOpen,setSidebarOpen]=useState(true);
+  const[showLog,setShowLog]=useState(false);
   const isHe=lang==="he";
 
   useEffect(()=>{
@@ -605,11 +606,36 @@ function App(){
           </div>
         </div>
       </div>
+
+      {/* Changelog */}
+      <div className="sp-card" style={{gridColumn:"1 / -1"}}>
+        <div className="sp-head" style={{cursor:"pointer",display:"flex",justifyContent:"space-between",alignItems:"center"}} onClick={()=>setShowLog(p=>!p)}>
+          <span>{isHe?"היסטוריית שינויים":"Changelog"}</span>
+          <span style={{fontSize:10,color:"var(--text3)"}}>{showLog?"▲":"▼"}</span>
+        </div>
+        {showLog&&<div className="sp-body" style={{maxHeight:300,overflowY:"auto"}}>
+          {CHANGELOG.map((e,i)=><div key={i} style={{padding:"8px 0",borderBottom:"1px solid var(--surface2)"}}>
+            <div style={{display:"flex",justifyContent:"space-between",marginBottom:2}}><span style={{fontWeight:600,fontSize:12,color:"var(--accent)"}}>{e.ver}</span><span style={{fontSize:10,color:"var(--text3)"}}>{e.date}</span></div>
+            <div style={{fontSize:11,color:"var(--text2)"}}>{isHe?e.he:e.en}</div>
+          </div>)}
+        </div>}
+      </div>
+    </div>
     </div>
 
     {showAdd&&<AddDeviceModal onClose={()=>setShowAdd(false)} onSave={addDraft} isHe={isHe}/>}
   </div>);
 }
+
+const CHANGELOG = [
+  {ver:"v3.2",date:"2026-08-17",he:"כפתור פתיחת סיידבר בולט עם כיתוב",en:"Prominent sidebar toggle button with label"},
+  {ver:"v3.1",date:"2026-08-17",he:"סיידבר מתכווץ + תיקון רספונסיביות למסכים קטנים",en:"Collapsible sidebar + responsive fix for small screens"},
+  {ver:"v3.0",date:"2026-08-17",he:"סימולטור מלא — ערכות צבעים, ניווט D-Pad, מצב בהיר, צבעים מותאמים",en:"Full simulator — theme system, D-Pad nav, light mode, custom colors"},
+  {ver:"v2.0",date:"2026-08-17",he:"פלטפורמת מולטי-מכשיר עם מסכים RTL, השלמה אוטומטית ושמירת טיוטות",en:"Multi-device platform with RTL screens, auto-complete, draft storage"},
+  {ver:"v1.2",date:"2026-08-17",he:"תמיכה מלאה בעברית — ממשק דו-לשוני, פריסת RTL, תוכן מסכים בעברית",en:"Full Hebrew support — bilingual UI, RTL layout, Hebrew screen content"},
+  {ver:"v1.1",date:"2026-08-17",he:"מעקב היסטוריית שינויים ואזור changelog",en:"Change history tracking and changelog section"},
+  {ver:"v1.0",date:"2026-08-17",he:"ערכת וויירפריים ראשונית ל-FuturePad T127 עם סאב-דומיין מותאם",en:"Initial wireframe kit for FuturePad T127 with custom subdomain"},
+];
 
 ReactDOM.createRoot(document.getElementById("app")).render(<App/>);
 </script>
