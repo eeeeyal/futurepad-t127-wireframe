@@ -618,20 +618,20 @@ function App(){
         </div>
       </div>
 
-      {/* Changelog */}
-      <div className="sp-card" style={{gridColumn:"1 / -1"}}>
-        <div className="sp-head" style={{cursor:"pointer",display:"flex",justifyContent:"space-between",alignItems:"center"}} onClick={()=>setShowLog(p=>!p)}>
-          <span>{isHe?"היסטוריית שינויים":"Changelog"}</span>
-          <span style={{fontSize:10,color:"var(--text3)"}}>{showLog?"▲":"▼"}</span>
+        {/* Changelog */}
+        <div className="sp-card" style={{gridColumn:"1 / -1"}}>
+          <div className="sp-head" style={{cursor:"pointer",display:"flex",justifyContent:"space-between",alignItems:"center"}} onClick={()=>setShowLog(p=>!p)}>
+            <span>{isHe?"היסטוריית שינויים":"Changelog"}</span>
+            <span style={{fontSize:10,color:"var(--text3)"}}>{showLog?"▲":"▼"}</span>
+          </div>
+          {showLog&&<div className="sp-body" style={{maxHeight:300,overflowY:"auto"}}>
+            {CHANGELOG.map((e,i)=><div key={i} style={{padding:"8px 0",borderBottom:"1px solid var(--surface2)"}}>
+              <div style={{display:"flex",justifyContent:"space-between",marginBottom:2}}><span style={{fontWeight:600,fontSize:12,color:"var(--accent)"}}>{e.ver}</span><span style={{fontSize:10,color:"var(--text3)"}}>{e.date}</span></div>
+              <div style={{fontSize:11,color:"var(--text2)"}}>{isHe?e.he:e.en}</div>
+            </div>)}
+          </div>}
         </div>
-        {showLog&&<div className="sp-body" style={{maxHeight:300,overflowY:"auto"}}>
-          {CHANGELOG.map((e,i)=><div key={i} style={{padding:"8px 0",borderBottom:"1px solid var(--surface2)"}}>
-            <div style={{display:"flex",justifyContent:"space-between",marginBottom:2}}><span style={{fontWeight:600,fontSize:12,color:"var(--accent)"}}>{e.ver}</span><span style={{fontSize:10,color:"var(--text3)"}}>{e.date}</span></div>
-            <div style={{fontSize:11,color:"var(--text2)"}}>{isHe?e.he:e.en}</div>
-          </div>)}
-        </div>}
       </div>
-    </div>
     </div>
 
     {showAdd&&<AddDeviceModal onClose={()=>setShowAdd(false)} onSave={addDraft} isHe={isHe}/>}
