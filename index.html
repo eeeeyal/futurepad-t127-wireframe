@@ -140,6 +140,19 @@
   .info-box h3 { color: var(--accent); margin-bottom: 4px; font-size: 13px; }
   .info-box p { font-size: 13px; color: var(--text2); }
 
+  /* Changelog */
+  .changelog { margin-top: 24px; }
+  .cl-entry { display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
+  .cl-entry:last-child { border-bottom: none; }
+  .cl-date { color: var(--text3); font-family: 'SF Mono', monospace; font-size: 12px; white-space: nowrap; min-width: 90px; }
+  .cl-author { color: var(--accent); font-weight: 500; min-width: 80px; white-space: nowrap; }
+  .cl-desc { color: var(--text2); }
+  .cl-tag { display: inline-block; padding: 1px 6px; border-radius: 3px; font-size: 10px; font-weight: 600; margin-right: 6px; text-transform: uppercase; }
+  .cl-tag.added { background: #1a3a2a; color: var(--green); }
+  .cl-tag.changed { background: #2a2a1a; color: #facc15; }
+  .cl-tag.fixed { background: #3a1a1a; color: var(--red); }
+  .cl-tag.info { background: #1a2a3a; color: var(--accent); }
+
   /* Phone SVG styles */
   .phone-screen {
     width: 300px; height: 400px;
@@ -245,6 +258,12 @@ const FLOWS = [
   ["Main Menu", "Settings", "D-Pad + OK"],
   ["Any Screen", "Idle", "END Key"],
   ["Incoming Call", "Call Active", "CSK (Answer)"],
+];
+
+const CHANGELOG = [
+  { date: "2026-08-17", author: "Eyal", tag: "added", desc: "Initial wireframe kit — 7 screens: Idle, Main Menu, Calendar, Contacts, Messages, Settings, Incoming Call" },
+  { date: "2026-08-17", author: "Eyal", tag: "added", desc: "Navigation flow map and device specifications table" },
+  { date: "2026-08-17", author: "Eyal", tag: "info", desc: "Deployed to wireframe.eyaldev.com via GitHub Pages" },
 ];
 
 function StatusBar() {
@@ -586,11 +605,31 @@ function App() {
         </div>
       </div>
 
+      <hr className="divider" />
+
+      <h2>Change History</h2>
+      <p style={{ fontSize: 13, color: "var(--text3)", marginBottom: 8 }}>Full audit trail — who changed what and when</p>
+      <div className="card">
+        <div className="card-body">
+          {CHANGELOG.slice().reverse().map((entry, i) => (
+            <div key={i} className="cl-entry">
+              <span className="cl-date">{entry.date}</span>
+              <span className="cl-author">{entry.author}</span>
+              <span className="cl-desc">
+                <span className={`cl-tag ${entry.tag}`}>{entry.tag}</span>
+                {entry.desc}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+
       <div className="info-box">
         <h3>Sharing & Collaboration</h3>
         <p>This wireframe is a live web page. Share the URL with anyone — designers, developers, or factory partners. 
            Each screen shows exact dimensions, softkey assignments, and navigation flows. 
-           To add new screens or modify existing ones, edit the source and push to GitHub.</p>
+           To add new screens or modify existing ones, edit the source and push to GitHub.
+           Every change is tracked in the Change History section above and in the Git commit log.</p>
       </div>
     </>
   );
