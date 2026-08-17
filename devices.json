@@ -1,0 +1,68 @@
+[
+  {
+    "id": "futurepad-t127",
+    "name": "FuturePad T127",
+    "manufacturer": "HY Digital",
+    "chipset": "UNISOC UMS9117",
+    "platform": "Mocor",
+    "os": "ThreadX RTOS",
+    "screenWidth": 240,
+    "screenHeight": 320,
+    "screenSize": "2.4\"",
+    "screenDensity": "QVGA",
+    "colorDepth": "16-bit",
+    "inputType": "T9 + D-Pad + 3 Softkeys",
+    "midlet": "MIDP 2.0 / CLDC 1.1",
+    "screens": [
+      {
+        "id": "idle",
+        "he": "מסך ראשי",
+        "en": "Idle / Home",
+        "skHe": ["תפריט", "", "אנשי קשר"],
+        "skEn": ["Menu", "", "Contacts"]
+      },
+      {
+        "id": "main_menu",
+        "he": "תפריט ראשי",
+        "en": "Main Menu",
+        "skHe": ["בחר", "אישור", "חזור"],
+        "skEn": ["Select", "OK", "Back"]
+      },
+      {
+        "id": "calendar",
+        "he": "לוח שנה",
+        "en": "Calendar",
+        "skHe": ["אפשרויות", "הצג", "חזור"],
+        "skEn": ["Options", "View", "Back"]
+      },
+      {
+        "id": "contacts",
+        "he": "אנשי קשר",
+        "en": "Contacts",
+        "skHe": ["אפשרויות", "פתח", "חזור"],
+        "skEn": ["Options", "Open", "Back"]
+      },
+      {
+        "id": "messages",
+        "he": "הודעות",
+        "en": "Messages",
+        "skHe": ["חדשה", "פתח", "חזור"],
+        "skEn": ["New", "Open", "Back"]
+      },
+      {
+        "id": "settings",
+        "he": "הגדרות",
+        "en": "Settings",
+        "skHe": ["בחר", "אישור", "חזור"],
+        "skEn": ["Select", "OK", "Back"]
+      },
+      {
+        "id": "call",
+        "he": "שיחה נכנסת",
+        "en": "Incoming Call",
+        "skHe": ["דחה", "ענה", "השתק"],
+        "skEn": ["Reject", "Answer", "Silent"]
+      }
+    ]
+  }
+]
